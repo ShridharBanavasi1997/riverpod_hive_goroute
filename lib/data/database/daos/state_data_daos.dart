@@ -10,7 +10,7 @@ class SateDataDao{
 
   void addState(StateData data){
     clear();
-    _stateDataBox.add(data);
+    _stateDataBox.put(Key,data);
   }
 
   StateData? getState(){
