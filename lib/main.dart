@@ -1,29 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_sample/modules/editicon/edit_icon.dart';
+import 'package:riverpod_sample/route/router.dart';
 
 import 'app_dependency.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final appDependency = AppDependency.instance;
   await appDependency.initialize();
 
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final AppRouter appRouter = AppRouter();
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ProviderScope(
+        child: MaterialApp.router(
       title: 'RiverPod Sample App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: EditIcon(),
-    );
+      routeInformationParser: appRouter.goRouter.routeInformationParser,
+      routerDelegate: appRouter.goRouter.routerDelegate,
+    ));
   }
 }

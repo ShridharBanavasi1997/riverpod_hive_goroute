@@ -10,7 +10,7 @@ class SateDataDao{
 
   void addState(StateData data){
     clear();
-    _stateDataBox.put(Key,data);
+    _stateDataBox.add(data);
   }
 
   StateData? getState(){
@@ -20,5 +20,6 @@ class SateDataDao{
   void clear() async {
     await _stateDataBox.clear();
   }
+
 
 }

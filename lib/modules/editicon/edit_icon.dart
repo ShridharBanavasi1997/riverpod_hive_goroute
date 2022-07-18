@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_sample/data/model/state_model.dart';
+import 'package:go_router/go_router.dart';
 import 'package:riverpod_sample/modules/editicon/editicon_controller.dart';
 import 'package:vector_math/vector_math_64.dart' show Vector3;
 
 import '../../data/database/models/state_data.dart';
+import '../../route/app_route_names.dart';
 import '../../widget/circle_widget.dart';
 
 class EditIcon extends ConsumerWidget {
@@ -121,6 +122,15 @@ class EditIcon extends ConsumerWidget {
             thumbColor: Color(state.color),
           )
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          context.go(AppRouth.selectIcon.routePath);
+        },
+        child: Icon(
+          Icons.settings,
+          color: Colors.white
+        ),
       ),
     );
   }
